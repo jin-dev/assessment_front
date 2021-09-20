@@ -10,10 +10,12 @@ import historySlicerReducer from './features/queryHistory/historySlice';
 
 export type AppThunk = ThunkAction<void, PhotoState, unknown, Action<string>>;
 
+//Global State management
+
 const store = configureStore({
   reducer: {
     photosStore: PhotosSliceReducer,
-    
+
     // anyOtherStore: anyOtherSlice,
     //
     history: historySlicerReducer,

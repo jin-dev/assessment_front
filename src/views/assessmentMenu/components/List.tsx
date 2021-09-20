@@ -4,6 +4,9 @@ import SearchBox from 'components/SearchBox';
 import ListTable from './ListTable';
 import EnrollModal from './EnrollModal';
 
+
+//Search info
+
 const List = ({ searchData, subURL, gubun, type, ...props }: any) => {
   const [query, setQuery] = useState<any>({});
   const [modalType, setModalType] = useState('');
@@ -15,11 +18,11 @@ const List = ({ searchData, subURL, gubun, type, ...props }: any) => {
     for (let key in inputs) {
 
       if (!inputs[key]) continue;
-    
+
       result[key] = inputs[key];
     }
-    
 
+    //Make input data to query
     setQuery(result);
   }, []);
 

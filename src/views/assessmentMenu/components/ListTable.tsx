@@ -27,6 +27,8 @@ interface columnType {
   name: string;
 }
 
+//Server-side rendering table
+
 const ListTable = ({
   title,
   gubun,
@@ -43,19 +45,20 @@ const ListTable = ({
   const [list, setList] = useState<any[]>([]);
   const [columns, setColumns] = useState<any>([]);
   const [totalCount, setTotalCount] = useState(0);
- 
+
   const skipInitialFetch = useRef(true);
   const [refresh, setRefresh] = useState(false);
   const [isButtonClicked, setIsButtonClicked] = useFlag();
 
 
+  //get Table data
   const getTableList = async () => {
-   
+
     try {
-      const data = await apiProvider.get(`${subURL}${query.id == null ? "" : query.id }`,);
+      const data = await apiProvider.get(`${subURL}${query.id == null ? "" : query.id}`,);
 
       let header = [];
-
+      //table header info
       header.push(
         {
           value: 'ID',
@@ -131,13 +134,15 @@ const ListTable = ({
       columns.length === 0 && setColumns(tableHeader);
     } catch (err) {
       setList([]);
-     
+
     } finally {
-    
+
     }
   };
 
   useEffect(() => {
+    //refresh table
+
     setIsButtonClicked(false);
     setRefresh(false);
     getTableList();

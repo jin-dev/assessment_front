@@ -19,6 +19,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useFlag } from 'components/checkFlag/checkFlag';
 
+//Simple Modal
+//add or update a user
+
 export default function EnrollModal({
     modal,
     setModal,
@@ -46,15 +49,15 @@ export default function EnrollModal({
 
 
     useEffect(() => {
-        if(type === 'update') {
-        setUserData({
-            ...userId
-        });
-        setRating(userId?.rating);
-        setPermission(userId?.permission === 1 ? true : false)
-    }
+        if (type === 'update') {
+            setUserData({
+                ...userId
+            });
+            setRating(userId?.rating);
+            setPermission(userId?.permission === 1 ? true : false)
+        }
     }, [])
-    
+
     const onModalSubmit = (modalData?: any) => {
         let validCheck = false;
         let URL = '/api/v1/users/';
@@ -118,15 +121,15 @@ export default function EnrollModal({
                                 <CCol xs="12" md="9">
                                     <CInput
                                         innerRef={register}
-                                        value = {userData?.username}
+                                        value={userData?.username}
                                         type="input"
                                         id="username"
                                         name="username"
                                         placeholder="Plase enter your name"
-                                        onChange={(e : any) => setUserData({
+                                        onChange={(e: any) => setUserData({
                                             ...userData,
-                                            ['username'] :  e.target.value,
-                                        }) }
+                                            ['username']: e.target.value,
+                                        })}
                                     />
                                 </CCol>
                             </CFormGroup>
@@ -138,15 +141,15 @@ export default function EnrollModal({
                                 <CCol xs="12" md="9">
                                     <CInput
                                         innerRef={register}
-                                        value = {userData?.email}
+                                        value={userData?.email}
                                         type="input"
                                         id="email"
                                         name="email"
                                         placeholder="Enter your email"
-                                        onChange={(e : any) => setUserData({
+                                        onChange={(e: any) => setUserData({
                                             ...userData,
-                                            ['email'] :  e.target.value,
-                                        }) }
+                                            ['email']: e.target.value,
+                                        })}
                                     />
                                 </CCol>
                             </CFormGroup>
